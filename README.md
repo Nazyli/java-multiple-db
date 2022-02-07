@@ -20,7 +20,6 @@ Query Params
 ### 🔸  Save
 
 **End-point: Save / Method: POST**
-Method: PUT
 >```
 >{{base_url}}/rest/students/save
 >```
