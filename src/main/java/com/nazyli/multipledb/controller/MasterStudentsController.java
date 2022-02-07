@@ -4,11 +4,11 @@ import com.nazyli.multipledb.dto.MasterStudentsDto;
 import com.nazyli.multipledb.dto.Response;
 import com.nazyli.multipledb.entity.MasterStudents;
 import com.nazyli.multipledb.repository.MasterStudentsRepository;
+import com.nazyli.multipledb.repositoryread.MasterStudentsRepositoryRead;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -17,6 +17,15 @@ import java.util.Optional;
 public class MasterStudentsController {
     @Autowired
     MasterStudentsRepository masterStudentsRepository;
+
+    @Autowired
+    MasterStudentsRepositoryRead masterStudentsRepositoryRead;
+
+    @GetMapping("/findAll")
+    public Response<Page<MasterStudents>> findAll(Pageable pageable) {
+        Page<MasterStudents> results = masterStudentsRepositoryRead.findAll(pageable);
+        return new Response<>(results);
+    }
 
     @PostMapping("/save")
     public Response<String> save(@RequestBody MasterStudentsDto req) {
