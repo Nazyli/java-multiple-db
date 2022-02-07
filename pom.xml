@@ -12,7 +12,7 @@
 	<artifactId>multiple-db</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>multiple-db</name>
-	<description>Demo project for Multiple Datas Source</description>
+	<description>Demo project for Multiple Data Source</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
